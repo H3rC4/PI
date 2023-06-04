@@ -6,8 +6,8 @@ const routes = require('./routes/index.js');
 
 require('./db.js');
 
-const server = express();
 
+const server = express();
 server.name = 'API';
 
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
@@ -23,6 +23,7 @@ server.use((req, res, next) => {
 });
 
 server.use('/', routes);
+//!aca tengo q armar el ruteo
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
