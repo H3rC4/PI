@@ -19,8 +19,3 @@ module.exports = async (req, res)=>{
   
 
 }
-/*Esta ruta recibirá todos los datos necesarios para crear una nueva receta
- y relacionarla con los tipos de dieta solicitados.
-Toda la información debe ser recibida por body.
-Debe crear la receta en la base de datos, y esta debe estar relacionada
- con los tipos de dieta indicados (al menos uno).*/
