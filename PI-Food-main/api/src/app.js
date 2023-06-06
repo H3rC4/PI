@@ -22,7 +22,7 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use('/', routes);
+server.use('/food', routes);
 //!aca tengo q armar el ruteo
 
 // Error catching endware.
