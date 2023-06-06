@@ -12,6 +12,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
     },
     image: {
       type: DataTypes.STRING,
@@ -29,6 +30,6 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: true
 
-     }
+     },
   });
 };
