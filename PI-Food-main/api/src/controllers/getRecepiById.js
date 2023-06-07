@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
     const apiRecipe = results.filter((e) => e.id === Number(idRecipe));
     
     
-    if (apiRecipe.length === 0 && databaseRecipe == null){
+    if (apiRecipe.length === 0 && databaseRecipe === null){
       return res.status(404).send(`No existen recetas con el ID = ${idRecipe}`)
     };
     if(apiRecipe[0]){

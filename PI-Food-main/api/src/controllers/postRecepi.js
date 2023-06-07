@@ -8,14 +8,10 @@ module.exports = async (req, res)=>{
         return  res.status(404).send('Faltan datos') 
       }
       await Recipe.create({name, image, resumen, health, paso})
-      const allRecipes = await Recipe.findAll();
-      return res.status(200).json(allRecipes);
+      return res.status(200).send('Tu receta se a creado satisfactoria mente');
     
   } catch (error) {
-      res.status(500).send(error)
+     return res.status(500).send(error)
 
   }
-  
-  
-
 }
