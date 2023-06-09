@@ -5,7 +5,7 @@ const { Recipe } = require("../db");
 
 module.exports = async (req, res) => {
   try {
-    const { idRecipe } = req.params;
+    const {idRecipe} = req.params;
     const id = Number(idRecipe);
     const databaseRecipe = await Recipe.findAll({where:{id}});
     const { results } = (
