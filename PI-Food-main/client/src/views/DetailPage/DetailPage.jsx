@@ -1,23 +1,39 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { getById } from '../../redux/actions'
-import { useSelector } from 'react-redux';
+//import { Link } from 'react-router-dom';
+import axios from 'axios';
+import style from './DetailPage.module.css'
 
 const DetailPage = () => {
 
-    const { id } = useParams();
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getById(id))
-    })
-    const recipeId = useSelector(state=>state.id); 
-    console.log(recipeId)
-    return (
-        <div >
-            <Link to='/home'><button>Home</button></Link>
+    const {id} = useParams()
+    const [recipe, setRecipe] = useState({});
+   
+    useEffect(  () => {
+            axios(`http://localhost:3001/food/recipes/${id}`).then(({ data }) => {
+                setRecipe(data);
+            });
+    },[id])   
+    console.log(recipe)
+     return (
+        <div className={style.card}>
+        <div className={style.recipeCard}>
+          <img src={recipe.image} alt={recipe.name} className={style.recipeImage} />
+          <div className={style.recipeInfo}>
+            <h2>{recipe.name}</h2>
+            <p>{recipe.resume}</p>
+            <p>Health Score: {recipe.healthScore}</p>
+            <h3>Paso a Paso:</h3>
+            <ol>
+                
+            {recipe.paso[0].steps.map((ele) => (
+               <li>{ele.step}</li>
+            ))}
+          </ol>
+            <p>Tipos de dieta: {recipe.diets}</p>
+          </div>
         </div>
+      </div>
     )
 }
 export default DetailPage;
