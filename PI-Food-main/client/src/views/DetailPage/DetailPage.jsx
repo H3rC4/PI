@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-//import { Link } from 'react-router-dom';
 import axios from 'axios';
 import style from './DetailPage.module.css'
 
@@ -22,13 +21,17 @@ const DetailPage = () => {
           <div className={style.recipeInfo}>
             <h2>{recipe.name}</h2>
             <p>{recipe.resume}</p>
-            <p>Health Score: {recipe.healthScore}</p>
+            <p>Health Score: {recipe.health}</p>
             <h3>Paso a Paso:</h3>
             <ol>
                 
-            {recipe.paso[0].steps.map((ele) => (
-               <li>{ele.step}</li>
-            ))}
+            {recipe.paso && recipe.paso.length > 0 && recipe.paso[0].steps && (
+  <ol>
+    {recipe.paso[0].steps.map((ele) => (
+      <li>{ele.step}</li>
+    ))}
+  </ol>
+)}
           </ol>
             <p>Tipos de dieta: {recipe.diets}</p>
           </div>

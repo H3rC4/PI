@@ -2,6 +2,9 @@ import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import NavBar from "./component/NavBar/NavBar"
 import  {DetailPage, FormPage, Home,LandingPage} from './views/index'
+import SearchBar from './component/SearchBar/SearchBar'
+
+
 function App() {
  
  const {pathname }= useLocation();
@@ -9,6 +12,7 @@ function App() {
     <div className="App">
 
      { pathname !== "/" && <NavBar/>}
+     {pathname === "/home" && <li> <SearchBar/></li>}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />

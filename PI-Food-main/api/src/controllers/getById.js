@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
         health: apiRecipe[0].healthScore,
         id: apiRecipe[0].id,
         name: apiRecipe[0].title,
-        imagen: apiRecipe[0].imagen,
+        image: apiRecipe[0].image,
         resumen: apiRecipe[0].summary,
         paso:apiRecipe[0].analyzedInstructions,
         diets: apiRecipe[0].diets

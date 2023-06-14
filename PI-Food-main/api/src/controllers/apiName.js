@@ -12,9 +12,24 @@ module.exports = async (name) => {
     ).data;
     const apiName = results.filter((receta) => {
       const lowerTitle = receta.title.toLowerCase();
-      if (lowerTitle.includes(lowerName)) return receta;
+      if (lowerTitle.includes(lowerName)){
+       return receta; 
+      } 
     });
-  
-    return apiName;
+    
+    const modificatedResults = apiName.map((receta)=>{
+     const  obj = {
+        health: receta.healthScore,
+        id: receta.id,
+        name: receta.title,
+        image: receta.image,
+        resumen: receta.summary,
+        paso:receta.analyzedInstructions,
+        diets: receta.diets
+      }
+      return obj;
+    })
+
+    return modificatedResults;
   };
   

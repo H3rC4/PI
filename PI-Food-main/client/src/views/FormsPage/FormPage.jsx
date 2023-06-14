@@ -39,6 +39,10 @@ const FormPage = () => {
     return (
         <form onSubmit={submitHandler} className={style.form} >
             <div className={style.container} >
+
+
+
+
                 <div>
                     <label >Receta</label>
                     <input type='text' name='name'  value={form.receta}  onChange={changeHandler}/>
