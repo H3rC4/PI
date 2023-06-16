@@ -1,18 +1,37 @@
 import style from "./NavBar.module.css";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getAll } from "../../redux/actions";
 import SearchBar from '../SearchBar/SearchBar'
-import {useLocation} from "react-router-dom"
 
 const NavBar = () => {
-  const {pathname }= useLocation();
- 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAll());
+  }, [dispatch]);
+
+  const handleHomeClick = () => {
+    dispatch(getAll());
+  };
+
   return (
     <nav className={style.nav}>
-    <ul>
-      <li><Link to="/home" activeClassName={style.active}>Home</Link></li>
-      <li><Link to="/add-recipe" activeClassName={style.active}>Add Recipe</Link></li>
-     </ul>
-  </nav>
+      <ul>
+        <li>
+          <Link to="/home" activeClassName={style.active} onClick={handleHomeClick}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/add-recipe" activeClassName={style.active}>
+            Add Recipe
+          </Link>
+        </li>
+        
+      </ul>
+    </nav>
   );
 };
 
