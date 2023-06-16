@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_ALL, GET_ID} from './actionType'
+import {GET_ALL,GET_NAME} from './actionType'
 
 // este es el action creator que tiene q
 //retornar una funcion tiene q despachar la action
@@ -11,11 +11,14 @@ export const   getAll = () =>{
     }
 }
 
-export const getById = (id) =>{
-    return async function(dispatch) {
-        const recipe = await axios.get(`http://localhost:3001/food/recipes/${id}`);
-        const recipes = recipe.data
-        dispatch({type: GET_ID, payload:recipes})
-    }
+export const getByName = (name) =>{
+
+return async function(dispatch) {
+    const {data} = await axios.get(`http://localhost:3001/food/recipes?name=${name}`)
+    dispatch({type: GET_NAME, payload:data })
+ 
+
+}
+
 }
 

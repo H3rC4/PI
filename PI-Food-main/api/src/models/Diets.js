@@ -14,5 +14,5 @@ module.exports = (sequelize) => {
       allowNull: false,
       autoIncrement: true
     }
-  });
+  },{ timestamps: false });
 };

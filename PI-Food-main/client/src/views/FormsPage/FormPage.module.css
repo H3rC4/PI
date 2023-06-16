@@ -1,13 +1,23 @@
-.form{
+.form {
     display: flex;
-    justify-content:space-around
-    
-
-}
-
-.container{
+    justify-content: center;
+  }
+  
+  .container {
     margin-top: 100px;
     display: flex;
     flex-direction: column;
     width: 400px;
-}
+  }
+  
+  .dietsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .dietsContainer > div {
+    display: flex;
+    align-items: center;
+  }
+  

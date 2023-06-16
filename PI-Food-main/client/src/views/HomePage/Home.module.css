@@ -1,10 +1,7 @@
 .container {
-    width: 100vw; 
-    height: 100vh; 
+
     background-image: url('../../component/asets/cocina3.png'); 
     background-size: cover;
     background-position: center; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   
   }

@@ -31,7 +31,7 @@ if(!form.health){
 if (!form.image) {
     errors.e9 = 'Debe ingresar la URL de la imagen';
 }
-const urlRegex =/^https:\/\/.+$/;
+const urlRegex =/^http:\/\/.+$/;
 
 if (!urlRegex.test(form.image)) {
     errors.e10 = 'Ingrese una URL válida para la imagen';
