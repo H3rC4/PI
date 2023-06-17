@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAll } from "../../redux/actions";
-import SearchBar from '../SearchBar/SearchBar'
 
 const NavBar = () => {
   const dispatch = useDispatch();

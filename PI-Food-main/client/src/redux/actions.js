@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_ALL,GET_NAME} from './actionType'
+import {GET_ALL, GET_NAME, ORDER, ORDER_ALFA, ORDER_API} from './actionType'
 
 // este es el action creator que tiene q
 //retornar una funcion tiene q despachar la action
@@ -16,9 +16,24 @@ export const getByName = (name) =>{
 return async function(dispatch) {
     const {data} = await axios.get(`http://localhost:3001/food/recipes?name=${name}`)
     dispatch({type: GET_NAME, payload:data })
- 
-
 }
-
+}
+export const orderRecipes = (orden) => {
+    return {
+      type: ORDER,
+      payload: orden,
+    };
+}
+export const orderAlfaRecipes = (orden) => {
+    return {
+      type: ORDER_ALFA,
+      payload: orden,
+    };
+}
+export const IsFromApi = (orden) => {
+    return {
+      type: ORDER_API,
+      payload: orden,
+    };
 }
 
