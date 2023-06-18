@@ -1,8 +1,19 @@
 import style from './LandingPage.module.css';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getAll } from '../../redux/actions'
 
 
 const LandingPage = () => {
+    const dispatch = useDispatch()
+        /*con useEffect le vamos a decir q cuando se monte el
+    componente o haya un cambio en el array de dependencias
+    ejecute la funcion
+    
+    */
+
+    useEffect(() => { dispatch(getAll()) }, [dispatch]);
     return (
         <div className={style.container}>
             <div className={style.recuadro}>

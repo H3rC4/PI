@@ -1,9 +1,9 @@
-import {GET_ALL, GET_NAME, ORDER, ORDER_ALFA, ORDER_API} from './actionType'
-
+import {GET_ALL, GET_NAME, ORDER, ORDER_ALFA, ORDER_API, NEXT,PREV} from './actionType'
 
 const initialstate = {
     recetas:[],
-    recetasName:[]
+    recetasName:[],
+    current:-9
 };
 
 const reducer = (state = initialstate , action) =>{
@@ -49,6 +49,22 @@ switch (action.type) {
             ? fromApi
             : fromDataBase,
       };
+      case NEXT:
+        let indexNext = state.current+9
+        let paginadoNext = state.recetas.slice(indexNext, indexNext + 9 )
+        return {
+            ...state,
+            recetasName: paginadoNext,
+            current:state.current +9
+        } 
+      case PREV:
+        let indexPrev = state.current-9
+        let paginadoPrev = state.recetas.slice(indexPrev, indexPrev + 9 )
+        return {
+            ...state,
+            recetasName: paginadoPrev,
+            current:state.current -9
+        } 
     
     default:
       return {...state};

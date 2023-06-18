@@ -3,3 +3,5 @@ export const GET_NAME = 'GET_NAME';
 export const ORDER = 'ORDER';
 export const ORDER_ALFA = 'ORDER_ALFA';
 export const ORDER_API = 'ORDER_API';
+export const NEXT = 'NEXT';
+export const PREV = 'PREV';

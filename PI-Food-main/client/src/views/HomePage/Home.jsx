@@ -1,11 +1,10 @@
 import style from './Home.module.css';
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useState,useEffect } from 'react'
 import RecipesContainer from '../../component/RecipesContainer/RecipesContainer';
-import { useState } from 'react'
+import Paginado from '../../component/Paginado/Paginado';
 // importar las actions q queremos despacahar
-import { getAll } from '../../redux/actions'
-import { orderRecipes, orderAlfaRecipes,IsFromApi } from '../../redux/actions'
+import { orderRecipes, orderAlfaRecipes,IsFromApi,nextPage } from '../../redux/actions'
 
 const Home = () => {
 
@@ -15,7 +14,7 @@ const Home = () => {
     ejecute la funcion
     
     */
-    useEffect(() => { dispatch(getAll()) }, [dispatch]);
+    useEffect(() => { dispatch(nextPage(0)) }, [dispatch]);
 
     const [axu, setAux] = useState(false);
 
@@ -47,6 +46,7 @@ const Home = () => {
                 <option value="A">Apis Recipes</option>
                 <option value="D">DB Recipes</option>
             </select>
+            <Paginado/>
             <RecipesContainer />
 
         </div>
