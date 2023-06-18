@@ -1,18 +1,16 @@
 import style from "./NavBar.module.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-//import { useEffect } from "react";
-import { nextPage } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { resetPage } from "../../redux/actions";
 
 const NavBar = () => {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getAll());
-  // }, [dispatch]);
-
+  const paginado = useSelector((state)=> state.paginado)
   const handleHomeClick = () => {
-    dispatch(nextPage(0));
+    if(paginado>1){
+    dispatch(resetPage());
+  }
   };
 
   return (

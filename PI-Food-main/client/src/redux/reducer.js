@@ -1,9 +1,21 @@
-import {GET_ALL, GET_NAME, ORDER, ORDER_ALFA, ORDER_API, NEXT,PREV} from './actionType'
+import {
+  GET_ALL, 
+  GET_NAME, 
+  ORDER, 
+  ORDER_ALFA, 
+  ORDER_API, 
+  NEXT, 
+  PREV, 
+  RESET,
+  GET_DIETS
+} from './actionType'
 
 const initialstate = {
     recetas:[],
     recetasName:[],
-    current:-9
+    current:-9,
+    paginado:0,
+    diets:[]
 };
 
 const reducer = (state = initialstate , action) =>{
@@ -18,6 +30,11 @@ switch (action.type) {
         return{
             ...state,
             recetasName : action.payload
+        };
+    case GET_DIETS:
+        return{
+            ...state,
+            diets : action.payload
         };
         case ORDER:
       const allRecipeOrdered = [...state.recetas];
@@ -55,7 +72,8 @@ switch (action.type) {
         return {
             ...state,
             recetasName: paginadoNext,
-            current:state.current +9
+            current:state.current +9,
+            paginado:state.paginado+1
         } 
       case PREV:
         let indexPrev = state.current-9
@@ -63,9 +81,21 @@ switch (action.type) {
         return {
             ...state,
             recetasName: paginadoPrev,
-            current:state.current -9
+            current:state.current -9,
+            paginado:state.paginado-1
+
         } 
-    
+      case RESET:
+
+
+        return {
+          ...state,
+          recetasName: [...state.recetas],
+          current:-9,
+          paginado:0
+
+      };
+        
     default:
       return {...state};
 }

@@ -4,9 +4,9 @@ const Recipe = (props)=>{
     const {id, image, name, diets} = props;
  return(
     <div className={style.recipe}>
-       <Link to={`/detail/${id}`}><p>{name} </p> </Link>
         <img  src={image} alt="" />
-        <p>{diets}</p>
+       <Link to={`/detail/${id}`}><h2>{name} </h2> </Link>
+        <h2>{diets}</h2>
     </div>
  )
 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_ALL, GET_NAME, ORDER, ORDER_ALFA, ORDER_API, NEXT, PREV} from './actionType'
+import {GET_ALL, GET_NAME, ORDER, ORDER_ALFA, ORDER_API, NEXT, PREV, RESET,GET_DIETS} from './actionType'
 import {modificatedResults} from './los100'
 // este es el action creator que tiene q
 //retornar una funcion tiene q despachar la action
@@ -19,6 +19,14 @@ return async function(dispatch) {
     dispatch({type: GET_NAME, payload:data })
 }
 }
+export const getDiets = () =>{
+
+return async function(dispatch) {
+    const {data} = await axios.get(`http://localhost:3001/food/diets`)
+    dispatch({type: GET_DIETS, payload:data })
+}
+}
+
 export const nextPage = () => {
   return {
    type: NEXT, 
@@ -27,6 +35,11 @@ export const nextPage = () => {
 export const prevPage = () => {
   return {
    type: PREV, 
+}
+}
+export const resetPage = () => {
+  return {
+   type: RESET, 
 }
 }
 export const orderRecipes = (orden) => {

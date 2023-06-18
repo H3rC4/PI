@@ -12,9 +12,9 @@ const Home = () => {
     /*con useEffect le vamos a decir q cuando se monte el
     componente o haya un cambio en el array de dependencias
     ejecute la funcion
-    
     */
-    useEffect(() => { dispatch(nextPage(0)) }, [dispatch]);
+   
+    useEffect(() => { dispatch(nextPage()) }, [dispatch]);
 
     const [axu, setAux] = useState(false);
 
@@ -46,8 +46,8 @@ const Home = () => {
                 <option value="A">Apis Recipes</option>
                 <option value="D">DB Recipes</option>
             </select>
-            <Paginado/>
             <RecipesContainer />
+            <Paginado/>
 
         </div>
     )

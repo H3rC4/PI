@@ -9,6 +9,7 @@ const recetas = useSelector(state=>state.recetasName);
     <div className={style.container}>
     {recetas.map((el)=>{
         return <Recipe
+        key={el.id}
         className={style.item}
         id = {el.id}
         name = {el.name}
