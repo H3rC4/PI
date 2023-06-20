@@ -5,27 +5,27 @@ let errors= {};
 if(!form.name){
     errors.e1 = 'Debe ingresar un nombre a la receta'
 }
-if(form.name.length < 4){
-    errors.e2 = 'Debe ingresar un nombre valido a la receta de al menos 4 caracteres'
+if(form.name.length < 4 && !errors.e1){
+    errors.e1 = 'Debe ingresar un nombre valido a la receta de al menos 4 caracteres'
 }
 
 if(!form.resumen){
     errors.e3 = 'Debe ingresar un resumen de la receta'
 }
-if(form.resumen.length < 10){
+if(form.resumen.length < 10&& !errors.e3){
     errors.e4 = 'Debe ingresar un resumen de al menos 10 caracteres'
 }
 if(!form.paso){
     errors.e5 = 'Debe ingresar los pasos a seguir'
 }
-if(form.paso.length < 10){
+if(form.paso.length < 10 && !errors.e5){
     errors.e6 = 'Al menos debe ingresar un paso de  10 caracteres'
 }
 if(!form.health){
     errors.e7 = 'Debe ingresar el Heald Score de la receta'
 }
 
- if(form.health.value < 1 && form.heald.value > 100){
+ if(form.health < 1 && form.health > 100 && !errors.e3){
      errors.e8 = 'El Heald Score debe ser un numero del 1 al 100'
  }
 if (!form.image) {

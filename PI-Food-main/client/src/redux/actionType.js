@@ -5,5 +5,5 @@ export const ORDER_ALFA = 'ORDER_ALFA';
 export const ORDER_API = 'ORDER_API';
 export const NEXT = 'NEXT';
 export const PREV = 'PREV';
-export const RESET = 'RESET';
 export const GET_DIETS = 'GET_DIETS';
+export const FIND_DIETS = 'FIND_DIETS';

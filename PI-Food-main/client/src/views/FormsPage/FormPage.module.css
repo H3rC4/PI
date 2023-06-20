@@ -1,23 +1,14 @@
 .form {
-    display: flex;
-    justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo sombreado transparente */
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra de fondo */
+  width: 100%; /* Ocupar todo el ancho del contenedor padre */
+  max-width: 800px; /* Ancho máximo del formulario */
+  margin: 0 auto; /* Centrar el formulario horizontalmente */
+}
+
+@media screen and (max-width: 600px) {
+  .form {
+    max-width: 100%; /* Cambiar el ancho máximo para pantallas más pequeñas */
   }
-  
-  .container {
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-  }
-  
-  .dietsContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  
-  .dietsContainer > div {
-    display: flex;
-    align-items: center;
-  }
-  
+}

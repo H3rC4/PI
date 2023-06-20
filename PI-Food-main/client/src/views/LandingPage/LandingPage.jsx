@@ -2,7 +2,7 @@ import style from './LandingPage.module.css';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getAll } from '../../redux/actions'
+import { getAll,nextPage } from '../../redux/actions'
 
 
 const LandingPage = () => {
@@ -12,8 +12,10 @@ const LandingPage = () => {
     ejecute la funcion
     
     */
-
-    useEffect(() => { dispatch(getAll()) }, [dispatch]);
+    useEffect(() => { 
+        dispatch(getAll()) 
+        dispatch(nextPage())
+    }, [dispatch]);
     return (
         <div className={style.container}>
             <div className={style.recuadro}>

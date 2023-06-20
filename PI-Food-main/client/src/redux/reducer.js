@@ -6,8 +6,8 @@ import {
   ORDER_API, 
   NEXT, 
   PREV, 
-  RESET,
-  GET_DIETS
+  GET_DIETS,
+  FIND_DIETS
 } from './actionType'
 
 const initialstate = {
@@ -66,6 +66,15 @@ switch (action.type) {
             ? fromApi
             : fromDataBase,
       };
+
+      case FIND_DIETS:
+        const orderedByDiet = [...state.recetas];
+        return {
+          ...state,
+          recetasName: orderedByDiet.filter(e => e.diets.includes(action.payload))
+              
+        }; 
+
       case NEXT:
         let indexNext = state.current+9
         let paginadoNext = state.recetas.slice(indexNext, indexNext + 9 )
@@ -85,16 +94,7 @@ switch (action.type) {
             paginado:state.paginado-1
 
         } 
-      case RESET:
-
-
-        return {
-          ...state,
-          recetasName: [...state.recetas],
-          current:-9,
-          paginado:0
-
-      };
+   
         
     default:
       return {...state};

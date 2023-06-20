@@ -1,22 +1,26 @@
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 100%; /* Asegura que el contenedor no exceda el ancho del elemento padre */
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 100%; /* Asegura que el contenedor no exceda el ancho del elemento padre */
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.item {
+  flex-basis: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  /* Otros estilos de los elementos */
+}
+
+@media screen and (max-width: 1200px) {
+  .item {
+    flex-basis: calc(50% - 20px);
   }
-  
-  
-  
-  @media screen and (max-width: 800px) {
-    .item {
-      width: 25%; /* Ajusta el ancho de los items para pantallas más pequeñas */
-    }
+}
+
+@media screen and (max-width: 800px) {
+  .item {
+    flex-basis: calc(100% - 20px);
   }
-  
-  @media screen and (max-width: 600px) {
-    .item {
-      width: 50%; /* Ajusta el ancho de los items para pantallas aún más pequeñas */
-    }
-  }
-  
-  
+}

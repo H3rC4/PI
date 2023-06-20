@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GET_ALL, GET_NAME, ORDER, ORDER_ALFA, ORDER_API, NEXT, PREV, RESET,GET_DIETS} from './actionType'
+import {GET_ALL, GET_NAME, ORDER, ORDER_ALFA, ORDER_API, NEXT, PREV, GET_DIETS,FIND_DIETS} from './actionType'
 import {modificatedResults} from './los100'
 // este es el action creator que tiene q
 //retornar una funcion tiene q despachar la action
@@ -7,7 +7,7 @@ export const   getAll = () =>{
     return async function(dispatch) {
         // const serverData = await axios.get("http://localhost:3001/food/recipes")
         // const recipes = serverData.data
-        const recipes = modificatedResults//!despues hay q borrar eso----
+       const recipes = modificatedResults//!despues hay q borrar eso----
         dispatch({type: GET_ALL, payload:recipes })
     }
 }
@@ -37,11 +37,7 @@ export const prevPage = () => {
    type: PREV, 
 }
 }
-export const resetPage = () => {
-  return {
-   type: RESET, 
-}
-}
+
 export const orderRecipes = (orden) => {
     return {
       type: ORDER,
@@ -60,4 +56,9 @@ export const IsFromApi = (orden) => {
       payload: orden,
     };
 }
-
+export const filterDiets = (orden) => {
+  return {
+    type: FIND_DIETS,
+    payload: orden,
+  };
+}

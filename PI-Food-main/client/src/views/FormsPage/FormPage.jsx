@@ -8,11 +8,11 @@ import { useSelector } from 'react-redux';
 
 const FormPage = () => {
   const dispatch = useDispatch();
-  
-  useEffect( ()=> {dispatch(getDiets())},[dispatch])
 
-  const diets = useSelector((state)=>state.diets )
- 
+  useEffect(() => { dispatch(getDiets()) }, [dispatch])
+
+  const diets = useSelector((state) => state.diets)
+
   const [form, setForm] = useState({
     name: '',
     resumen: '',
@@ -54,6 +54,7 @@ const FormPage = () => {
       .then((res) => alert(res.data))
       .catch((err) => alert(err.data));
   };
+  const isFormValid = Object.keys(errors).length > 0 || Object.values(form).some(value => value === '');
 
   return (
     <form onSubmit={submitHandler} className={style.form}>
@@ -80,33 +81,11 @@ const FormPage = () => {
         </div>
 
         <div>
-          <label>HealdScore</label>
-          <input type="number" name="health" value={form.heald} onChange={changeHandler} />
+          <label>Health Score</label>
+          <input type="text" name="health" value={form.health} onChange={changeHandler} inputMode="numeric" pattern="[0-9]*" />
           {errors.e7 && <p>{errors.e7}</p>}
           {errors.e8 && <p>{errors.e8}</p>}
         </div>
-
-        <div>
-          <label>Diets</label>
-          <div className={style.dietsContainer}>
-          {diets.map((e) => {
-            const id = String(e.id); // convertir el ID en una cadena
-            return (
-              <div key={e.id}>
-                <label>{e.name}</label>
-                <input
-                  type="checkbox"
-                  value={id}
-                  name="diets"
-                  checked={form.diets.includes(id)}
-                  onChange={dietChangeHandler}
-                />
-              </div>
-            );
-          })}
-          </div>
-        </div>
-
         <div>
           <label>Imagen</label>
           <input
@@ -120,7 +99,32 @@ const FormPage = () => {
           {errors.e10 && <p>{errors.e10}</p>}
         </div>
 
-        <button type="submit">Agregar Receta</button>
+        <div>
+          <label>Diets</label>
+          <div className={style.dietsContainer}>
+            {diets.map((e) => {
+              const id = String(e.id); // convertir el ID en una cadena
+              return (
+                <div key={e.id}>
+                  <label>{e.name}</label>
+                  <input
+                    type="checkbox"
+                    value={id}
+                    name="diets"
+                    checked={form.diets.includes(id)}
+                    onChange={dietChangeHandler}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+
+        <button type="submit" disabled={isFormValid}>
+           Agregar Receta
+        </button>
+
       </div>
     </form>
   );
