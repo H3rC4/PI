@@ -29,7 +29,7 @@ const DetailPage = () => {
             ? <li>{recipe.paso}</li>
             :''
           }
-          {typeof recipe.paso !== 'string' && recipe.paso.map((ele) => (
+          {recipe.paso && typeof recipe.paso !== 'string' && recipe.paso.map((ele) => (
                 <li>{ele.step}</li>
             ))}
           </ol>

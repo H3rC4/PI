@@ -6,8 +6,8 @@ import {GET_ALL, GET_NAME, ORDER, ORDER_ALFA, ORDER_API, NEXT, PREV, GET_DIETS,F
 export const   getAll = () =>{
     return async function(dispatch) {
         const serverData = await axios.get("http://localhost:3001/food/recipes")
-        const recipes = serverData.data
-      //  const recipes = modificatedResults//!despues hay q borrar eso----
+         const recipes = serverData.data
+        //const recipes = modificatedResults//!despues hay q borrar eso----
         dispatch({type: GET_ALL, payload:recipes })
     }
 }

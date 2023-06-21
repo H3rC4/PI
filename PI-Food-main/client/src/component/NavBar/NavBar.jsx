@@ -24,13 +24,13 @@ const NavBar = () => {
       <ul>
         <li>
           <Link to="/home" activeClassName={style.active} >
-            Home
+           <button>Home</button> 
           </Link>
         </li>
 
         <li>
           <Link to="/add-recipe" activeClassName={style.active}>
-            Add Recipe
+           <button>Add Recipe</button> 
           </Link>
         </li>
         

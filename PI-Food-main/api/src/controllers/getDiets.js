@@ -13,6 +13,10 @@ const cleanedArray = (arr) => {
 };
 
 module.exports = async () => {
+  
+  const dataBaseDiets = await Diets.findAll();
+  if(dataBaseDiets) return [...dataBaseDiets];
+ 
   const { results } = (
     await axios.get(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`
@@ -33,8 +37,9 @@ module.exports = async () => {
     where:{name: dietName},
   });
  }
-  const dataBaseDiets = await Diets.findAll();
-  return [...dataBaseDiets];
+ const diets = await Diets.findAll();
+
+  return [...diets];
 };
 
 /*Obtiene un arreglo con todos los tipos de dietas existentes.

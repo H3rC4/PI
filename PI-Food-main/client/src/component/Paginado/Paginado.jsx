@@ -22,7 +22,7 @@ const Paginado = () => {
     return (
         <div className={style.paginado}>
             <button onClick={handlerPrev}>prev</button>
-            <p>Page: {pagina}</p>
+            <h3>{ ` ${pagina}  `}</h3>
             <button onClick={handlerNext}>next</button>
         </div>
     )

@@ -21,7 +21,6 @@ const FormPage = () => {
     image: '',
     diets: [],
   });
-  console.log(form);
   const [errors, setErrors] = useState({});
 
   const changeHandler = (event) => {
@@ -99,7 +98,7 @@ const FormPage = () => {
         </div>
 
         <div className={style.diets}>
-          <label>Diets</label>
+          <label>Diets:</label>
           <div className={style.dietsContainer}>
             {diets.map((e) => {
               const id = String(e.id); // convertir el ID en una cadena
@@ -121,7 +120,7 @@ const FormPage = () => {
 
 
         <button type="submit" disabled={isFormValid}>
-           Agregar Receta
+           Add Recipe
         </button>
 
       </div>

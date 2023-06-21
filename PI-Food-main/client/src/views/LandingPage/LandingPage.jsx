@@ -18,11 +18,11 @@ const LandingPage = () => {
     return (
         <div className={style.container}>
             <div className={style.recuadro}>
-            <p>¡Bienvenido a nuestra web de recetas! Descubre una experiencia culinaria extraordinaria.
+            <h3>¡Bienvenido a nuestra web de recetas! Descubre una experiencia culinaria extraordinaria.
                 ¿Estás buscando inspiración para tus comidas diarias? ¿Quieres sorprender a 
                 tus seres queridos con platos deliciosos y creativos? ¡Estás en el lugar correcto! 
                 Nuestra web de recetas está diseñada para convertirte en un verdadero chef en la comodidad de 
-                tu hogar.</p>
+                tu hogar.</h3>
             <Link to='/home'>
                 <button>Home</button>
             </Link>
