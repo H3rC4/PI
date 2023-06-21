@@ -16,11 +16,13 @@
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
+  
 }
 
 .formContainer {
   display: grid;
   grid-gap: 10px;
+  padding-right: 20px;
 }
 
 input[type="text"],
@@ -98,4 +100,8 @@ p {
 .form input[name="health"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.formContainer button {
+  
+  width: 30%;
 }

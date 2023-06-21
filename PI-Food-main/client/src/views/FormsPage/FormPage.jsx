@@ -4,7 +4,7 @@ import validate from './validate';
 import { useDispatch } from 'react-redux';
 import { getDiets } from '../../redux/actions'
 import { useSelector } from 'react-redux';
-import {postForm} from '../../redux/actions'
+import { postForm } from '../../redux/actions'
 
 const FormPage = () => {
   const dispatch = useDispatch();
@@ -61,70 +61,70 @@ const FormPage = () => {
 
   return (
     <div className={style.container}>
-    <form onSubmit={submitHandler} className={style.form}>
-      <div className={style.formContainer}>
-        <div>
-          <label>Receta</label>
-          <input type="text" name="name" value={form.receta} onChange={changeHandler} />
-          {errors.e1 && <p>{errors.e1}</p>}
-        </div>
+      <form onSubmit={submitHandler} className={style.form}>
+        <div className={style.formContainer}>
+          <div>
+            <label>Receta</label>
+            <input type="text" name="name" value={form.receta} onChange={changeHandler} />
+            {errors.e1 && <p>{errors.e1}</p>}
+          </div>
 
-        <div>
-          <label>Resumen</label>
-          <textarea type="text" name="resumen" value={form.resumen} onChange={changeHandler} />
-          {errors.e2 && <p>{errors.e2}</p>}
-        </div>
+          <div>
+            <label>Resumen</label>
+            <textarea type="text" name="resumen" value={form.resumen} onChange={changeHandler} />
+            {errors.e2 && <p>{errors.e2}</p>}
+          </div>
 
-        <div>
-          <label>Pasos a seguir</label>
-          <textarea type="text" name="paso" value={form.paso} onChange={changeHandler} />
-          {errors.e3 && <p>{errors.e3}</p>}
-        </div>
+          <div>
+            <label>Pasos a seguir</label>
+            <textarea type="text" name="paso" value={form.paso} onChange={changeHandler} />
+            {errors.e3 && <p>{errors.e3}</p>}
+          </div>
 
-        <div>
-          <label>Health Score</label>
-          <input type="number" name="health" value={form.health} onChange={changeHandler} inputMode="numeric" />          {errors.e4 && <p>{errors.e4}</p>}
-        </div>
-        <div>
-          <label>Imagen</label>
-          <input
-            type="text"
-            placeholder="url de la imagen"
-            name="image"
-            value={form.imagen}
-            onChange={changeHandler}
-          />
-          {errors.e5 && <p>{errors.e5}</p>}
-        </div>
+          <div>
+            <label>Health Score</label>
+            <input type="number" name="health" value={form.health} onChange={changeHandler} inputMode="numeric" />          {errors.e4 && <p>{errors.e4}</p>}
+          </div>
+          <div>
+            <label>Imagen</label>
+            <input
+              type="text"
+              placeholder="url de la imagen"
+              name="image"
+              value={form.imagen}
+              onChange={changeHandler}
+            />
+            {errors.e5 && <p>{errors.e5}</p>}
+          </div>
 
-        <div className={style.diets}>
-          <label>Diets:</label>
-          <div className={style.dietsContainer}>
-            {diets.map((e) => {
-              const id = String(e.id); // convertir el ID en una cadena
-              return (
-                <div key={e.id}>
-                  <label>{e.name}</label>
-                  <input
-                    type="checkbox"
-                    value={id}
-                    name="diets"
-                    checked={form.diets.includes(id)}
-                    onChange={dietChangeHandler}
-                  />
-                </div>
-              );
-            })}
+          <div className={style.diets}>
+            <label>Diets:</label>
+            <div className={style.dietsContainer}>
+              {diets.map((e) => {
+                const id = String(e.id); // convertir el ID en una cadena
+                return (
+                  <div key={e.id}>
+                    <label>{e.name}</label>
+                    <input
+                      type="checkbox"
+                      value={id}
+                      name="diets"
+                      checked={form.diets.includes(id)}
+                      onChange={dietChangeHandler}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" disabled={isFormValid}>
+              Add Recipe
+            </button>
           </div>
         </div>
-
-
-        <button type="submit" disabled={isFormValid}>
-           Add Recipe
-        </button>
-
-      </div>
-    </form>
+      </form>
     </div>
   );
 };
