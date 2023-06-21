@@ -1,16 +1,15 @@
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 100%; /* Asegura que el contenedor no exceda el ancho del elemento padre */
-  padding-left: 20px;
-  padding-right: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  max-width: 100%;
+  padding: 70px;
 }
+
 
 .item {
   flex-basis: calc(33.33% - 20px);
   margin-bottom: 20px;
-  /* Otros estilos de los elementos */
 }
 
 @media screen and (max-width: 1200px) {

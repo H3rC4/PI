@@ -4,11 +4,11 @@ const Recipe = (props)=>{
     const {id, image, name, diets} = props;
  return(
     <div className={style.recipe}>
-        <img  src={image} alt="" />
-       <Link to={`/detail/${id}`}><h4>{name} </h4> </Link>
+       <Link to={`/detail/${id}`}> <img  src={image} alt="" />
+       <h4>{name} </h4> </Link>
         <ul>DIETS:</ul>
         <ul>
-       {diets && diets.map((e)=><li>{e}</li>)}
+       {diets && diets.map((e)=><li key ={e}>{e}</li>)}
        </ul>
     </div>
  )

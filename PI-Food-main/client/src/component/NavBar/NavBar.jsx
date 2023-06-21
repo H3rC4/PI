@@ -17,8 +17,7 @@ const NavBar = () => {
     dispatch(getByName(name));
   };
 
-  const isAddRecipePage = location.pathname === "/add-recipe";
-
+  const isHomePage = location.pathname === "/home";
   return (
     <nav className={style.nav}>
       <ul>
@@ -33,10 +32,12 @@ const NavBar = () => {
            <button>Add Recipe</button> 
           </Link>
         </li>
-        
-        {!isAddRecipePage && (
+        {isHomePage &&  (
+          <li>
+          <input type="search" onChange={handleChange} name="name" />
+        </li>)}
+        {isHomePage && (
           <li className={style.contenedor}>
-            <input type="search" onChange={handleChange} name="name" />
             <button onClick={handleSearch}>
               Buscar receta
             </button>

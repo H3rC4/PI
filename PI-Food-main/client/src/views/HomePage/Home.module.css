@@ -1,7 +1,7 @@
 .container {
 
-    background-image: url('../../component/asets/cocina3.png'); 
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-  }
+  background-image: url('../../component/asets/cocina3.png'); 
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
