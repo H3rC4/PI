@@ -2,7 +2,7 @@ import style from './LandingPage.module.css';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getAll,nextPage } from '../../redux/actions'
+import { getAll } from '../../redux/actions'
 
 
 const LandingPage = () => {
@@ -14,7 +14,6 @@ const LandingPage = () => {
     */
     useEffect(() => { 
         dispatch(getAll()) 
-        dispatch(nextPage())
     }, [dispatch]);
     return (
         <div className={style.container}>

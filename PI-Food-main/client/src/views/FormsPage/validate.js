@@ -10,32 +10,32 @@ if(form.name.length < 4 && !errors.e1){
 }
 
 if(!form.resumen){
-    errors.e3 = 'Debe ingresar un resumen de la receta'
+    errors.e2 = 'Debe ingresar un resumen de la receta'
 }
-if(form.resumen.length < 10&& !errors.e3){
-    errors.e4 = 'Debe ingresar un resumen de al menos 10 caracteres'
+if(form.resumen.length < 10&& !errors.e2){
+    errors.e2 = 'Debe ingresar un resumen de al menos 10 caracteres'
 }
 if(!form.paso){
-    errors.e5 = 'Debe ingresar los pasos a seguir'
+    errors.e3 = 'Debe ingresar los pasos a seguir'
 }
-if(form.paso.length < 10 && !errors.e5){
-    errors.e6 = 'Al menos debe ingresar un paso de  10 caracteres'
+if(form.paso.length < 10 && !errors.e3){
+    errors.e3 = 'Al menos debe ingresar un paso de  10 caracteres'
 }
 if(!form.health){
-    errors.e7 = 'Debe ingresar el Heald Score de la receta'
+    errors.e4 = 'Debe ingresar el Heald Score de la receta'
 }
 
- if(form.health < 1 && form.health > 100 && !errors.e3){
-     errors.e8 = 'El Heald Score debe ser un numero del 1 al 100'
+ if(form.health < 1 || form.health > 100){
+    if(!errors.e4)errors.e4 = 'El Heald Score debe ser un numero del 1 al 100'
  }
 if (!form.image) {
-    errors.e9 = 'Debe ingresar la URL de la imagen';
+    errors.e5 = 'Debe ingresar la URL de la imagen';
 }
-const urlRegex =/^http:\/\/.+$/;
+// const urlRegex =/^http:\/\/.+$/;
 
-if (!urlRegex.test(form.image)) {
-    errors.e10 = 'Ingrese una URL válida para la imagen';
-}
+// if (!urlRegex.test(form.image)) {
+//    if(!errors.e9) errors.e9 = 'Ingrese una URL válida para la imagen';
+// }
 
 
 return errors;

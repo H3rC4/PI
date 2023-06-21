@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import style from './FormPage.module.css';
 import validate from './validate';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { getDiets } from '../../redux/actions'
 import { useSelector } from 'react-redux';
+import {postForm} from '../../redux/actions'
 
 const FormPage = () => {
   const dispatch = useDispatch();
@@ -48,43 +48,43 @@ const FormPage = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-
-    axios
-      .post('http://localhost:3001/food/recipes', form)
-      .then((res) => alert(res.data))
-      .catch((err) => alert(err.data));
+    dispatch(postForm(form));
+    setForm({
+      name: '',
+      resumen: '',
+      paso: '',
+      health: '',
+      image: '',
+      diets: [],
+    })
   };
   const isFormValid = Object.keys(errors).length > 0 || Object.values(form).some(value => value === '');
 
   return (
+    <div className={style.container}>
     <form onSubmit={submitHandler} className={style.form}>
-      <div className={style.container}>
+      <div className={style.formContainer}>
         <div>
           <label>Receta</label>
           <input type="text" name="name" value={form.receta} onChange={changeHandler} />
           {errors.e1 && <p>{errors.e1}</p>}
-          {errors.e2 && <p>{errors.e2}</p>}
         </div>
 
         <div>
           <label>Resumen</label>
-          <input type="text" name="resumen" value={form.resumen} onChange={changeHandler} />
-          {errors.e3 && <p>{errors.e3}</p>}
-          {errors.e4 && <p>{errors.e4}</p>}
+          <textarea type="text" name="resumen" value={form.resumen} onChange={changeHandler} />
+          {errors.e2 && <p>{errors.e2}</p>}
         </div>
 
         <div>
           <label>Pasos a seguir</label>
-          <input type="text" name="paso" value={form.paso} onChange={changeHandler} />
-          {errors.e5 && <p>{errors.e5}</p>}
-          {errors.e6 && <p>{errors.e6}</p>}
+          <textarea type="text" name="paso" value={form.paso} onChange={changeHandler} />
+          {errors.e3 && <p>{errors.e3}</p>}
         </div>
 
         <div>
           <label>Health Score</label>
-          <input type="text" name="health" value={form.health} onChange={changeHandler} inputMode="numeric" pattern="[0-9]*" />
-          {errors.e7 && <p>{errors.e7}</p>}
-          {errors.e8 && <p>{errors.e8}</p>}
+          <input type="number" name="health" value={form.health} onChange={changeHandler} inputMode="numeric" />          {errors.e4 && <p>{errors.e4}</p>}
         </div>
         <div>
           <label>Imagen</label>
@@ -95,11 +95,10 @@ const FormPage = () => {
             value={form.imagen}
             onChange={changeHandler}
           />
-          {errors.e9 && <p>{errors.e9}</p>}
-          {errors.e10 && <p>{errors.e10}</p>}
+          {errors.e5 && <p>{errors.e5}</p>}
         </div>
 
-        <div>
+        <div className={style.diets}>
           <label>Diets</label>
           <div className={style.dietsContainer}>
             {diets.map((e) => {
@@ -127,6 +126,7 @@ const FormPage = () => {
 
       </div>
     </form>
+    </div>
   );
 };
 

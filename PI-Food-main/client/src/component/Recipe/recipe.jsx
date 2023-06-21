@@ -6,7 +6,7 @@ const Recipe = (props)=>{
     <div className={style.recipe}>
         <img  src={image} alt="" />
        <Link to={`/detail/${id}`}><h4>{name} </h4> </Link>
-       {diets.map((e)=><p>{e}</p>)}
+       {diets && diets.map((e)=><p>{e}</p>)}
     </div>
  )
 }

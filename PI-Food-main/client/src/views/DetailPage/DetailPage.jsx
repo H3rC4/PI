@@ -1,42 +1,45 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import style from './DetailPage.module.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { getDetail } from '../../redux/actions'
+
 
 const DetailPage = () => {
+  const { id } = useParams()
+  const dispatch = useDispatch()
 
-    const {id} = useParams()
-    const [recipe, setRecipe] = useState({});
-   
-    useEffect(  () => {
-            axios(`http://localhost:3001/food/recipes/${id}`).then(({ data }) => {
-                setRecipe(data);
-            });
-    },[id])   
-    console.log(recipe)
-     return (
-        <div className={style.card}>
-        <div className={style.recipeCard}>
-          <img src={recipe.image} alt={recipe.name} className={style.recipeImage} />
-          <div className={style.recipeInfo}>
-            <h2>{recipe.name}</h2>
-            <p>{recipe.resume}</p>
-            <p>Health Score: {recipe.health}</p>
-            <h3>Paso a Paso:</h3>
-            <ol>
-                
-            {recipe.paso && recipe.paso.length > 0 && recipe.paso[0].steps && (
-  <ol>
-    {recipe.paso[0].steps.map((ele) => (
-      <li>{ele.step}</li>
-    ))}
-  </ol>
-)}
+  useEffect(() => {
+    dispatch(getDetail(id))
+  }, [dispatch, id])
+  const recipeDB = useSelector((state) => state.recipeDetail[0])
+  const recipeApi = useSelector((state) => state.recipeDetail)
+  const recipe = recipeDB ? recipeDB : recipeApi
+
+  return (
+    <div className={style.card}>
+      <div className={style.recipeCard}>
+        <img src={recipe.image} alt={recipe.name} className={style.recipeImage} />
+        <div className={style.recipeInfo}>
+          <h2>{recipe.name && recipe.name}</h2>
+          <p>{recipe.resume && recipe.resume}</p>
+          <p>Health Score: {recipe.health && recipe.health}</p>
+          <h3>Paso a Paso:</h3>
+          <ol>{typeof recipe.paso === 'string'
+            ? <li>{recipe.paso}</li>
+            :''
+          }
+          {typeof recipe.paso !== 'string' && recipe.paso.map((ele) => (
+                <li>{ele.step}</li>
+            ))}
           </ol>
-            <p>Tipos de dieta: {recipe.diets}</p>
-          </div>
+          <p>Tipos de dieta: </p>
+          {
+            recipe.diets && recipe.diets.map((elem) => <p>{elem}</p>)
+          }
         </div>
       </div>
-    )
+    </div>
+  )
 }
 export default DetailPage;

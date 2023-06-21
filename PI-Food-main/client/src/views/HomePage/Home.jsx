@@ -1,10 +1,10 @@
 import style from './Home.module.css';
 import { useDispatch } from 'react-redux';
-import { useState} from 'react'
+import { useState, useEffect} from 'react'
 import RecipesContainer from '../../component/RecipesContainer/RecipesContainer';
 import Paginado from '../../component/Paginado/Paginado';
 // importar las actions q queremos despacahar
-import { orderRecipes, orderAlfaRecipes,IsFromApi,filterDiets } from '../../redux/actions'
+import { orderRecipes, orderAlfaRecipes,IsFromApi,filterDiets,nextPage } from '../../redux/actions'
 
 const Home = () => {
 
@@ -13,7 +13,9 @@ const Home = () => {
     componente o haya un cambio en el array de dependencias
     ejecute la funcion
     */
-   
+    useEffect(() => { 
+        dispatch(nextPage())
+    }, [dispatch]);
 
     const [axu, setAux] = useState(false);
 

@@ -1,14 +1,101 @@
-.form {
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo sombreado transparente */
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra de fondo */
-  width: 100%; /* Ocupar todo el ancho del contenedor padre */
-  max-width: 800px; /* Ancho máximo del formulario */
-  margin: 0 auto; /* Centrar el formulario horizontalmente */
+.container {
+  background-image: url('../../component/asets/cocina3.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-@media screen and (max-width: 600px) {
+.form {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.formContainer {
+  display: grid;
+  grid-gap: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+.dietsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+.diets label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: white;
+  font-size: 18px;
+}
+
+.diets input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+p {
+  color: red;
+  margin-top: 5px;
+}
+
+@media (max-width: 600px) {
   .form {
-    max-width: 100%; /* Cambiar el ancho máximo para pantallas más pequeñas */
+    max-width: 100%;
   }
+}
+
+.form input[name="resumen"],
+.form input[name="paso"],
+.form textarea[name="resumen"],
+.form textarea[name="paso"] {
+  font-size: 16px;
+  height: 40px;
+  resize: vertical;
+}
+
+.form textarea[name="resumen"],
+.form textarea[name="paso"] {
+  height: 80px;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: white;
+  font-size: 18px;
+}
+
+.form p {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: red;
+  font-size: 18px;
+}
+.form input[name="health"]::-webkit-inner-spin-button,
+.form input[name="health"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

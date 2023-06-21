@@ -7,7 +7,8 @@ import {
   NEXT, 
   PREV, 
   GET_DIETS,
-  FIND_DIETS
+  FIND_DIETS,
+  GET_DETAIL
 } from './actionType'
 
 const initialstate = {
@@ -15,7 +16,8 @@ const initialstate = {
     recetasName:[],
     current:-9,
     paginado:0,
-    diets:[]
+    diets:[],
+    recipeDetail:[]
 };
 
 const reducer = (state = initialstate , action) =>{
@@ -25,6 +27,11 @@ switch (action.type) {
             ...state,
             recetas: action.payload,
             recetasName : action.payload,
+        };
+    case GET_DETAIL:
+        return{
+            ...state,
+            recipeDetail:action.payload
         };
     case GET_NAME:
         return{
@@ -71,7 +78,7 @@ switch (action.type) {
         const orderedByDiet = [...state.recetas];
         return {
           ...state,
-          recetasName: orderedByDiet.filter(e => e.diets.includes(action.payload))
+          recetasName: orderedByDiet.filter((e) => e.hasOwnProperty('diets') && e.diets.includes(action.payload))
               
         }; 
 

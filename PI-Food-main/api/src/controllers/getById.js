@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
         name: apiRecipe[0].title,
         image: apiRecipe[0].image,
         resumen: apiRecipe[0].summary,
-        paso:apiRecipe[0].analyzedInstructions,
+        paso:apiRecipe[0].analyzedInstructions[0].steps,
         diets: apiRecipe[0].diets
       }
      return res.status(200).json(receta);
