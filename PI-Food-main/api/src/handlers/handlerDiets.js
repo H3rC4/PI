@@ -15,3 +15,17 @@ module.exports = async (req, res) => {
 
 
 };
+
+// module.exports = (req, res) => {
+//   getDiets()
+//     .then(response => {
+//       if (response) {
+//         res.status(200).json(response);
+//       } else {
+//         res.status(400).send(error);
+//       }
+//     })
+//     .catch(error => {
+//       res.status(500).send(error.message);
+//     });
+// };

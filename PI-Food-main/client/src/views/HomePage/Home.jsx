@@ -4,7 +4,7 @@ import { useState, useEffect} from 'react'
 import RecipesContainer from '../../component/RecipesContainer/RecipesContainer';
 import Paginado from '../../component/Paginado/Paginado';
 // importar las actions q queremos despacahar
-import { orderRecipes, orderAlfaRecipes,IsFromApi,filterDiets,nextPage, getAll } from '../../redux/actions'
+import { orderRecipes, orderAlfaRecipes,IsFromApi,filterDiets, getAll, nextPage } from '../../redux/actions'
 
 const Home = () => {
 
@@ -14,11 +14,13 @@ const Home = () => {
     ejecute la funcion
     */
     const recipes = useSelector((state) => state.recetasName)
+    const currentPage = useSelector((state) => state.paginado)
 
    
     useEffect(() => { 
         if(!recipes.length){dispatch(getAll())}
-    }, [dispatch,recipes.length,recipes]);
+        if(!currentPage){dispatch(nextPage())}
+    }, [dispatch,recipes.length,currentPage]);
 
     const [axu, setAux] = useState(false);
 

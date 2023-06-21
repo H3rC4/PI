@@ -1,16 +1,18 @@
 import axios from 'axios';
 import {GET_ALL, GET_NAME, ORDER, ORDER_ALFA, ORDER_API, NEXT, PREV, GET_DIETS,FIND_DIETS,GET_DETAIL} from './actionType'
-//import {modificatedResults} from './los100'
+import {modificatedResults} from './los100'
 // este es el action creator que tiene q
 //retornar una funcion tiene q despachar la action
 export const   getAll = () =>{
     return async function(dispatch) {
-        const serverData = await axios.get("http://localhost:3001/food/recipes")
-         const recipes = serverData.data
-        //const recipes = modificatedResults//!despues hay q borrar eso----
+        // const serverData = await axios.get("http://localhost:3001/food/recipes")
+        //  const recipes = serverData.data
+          const recipes = modificatedResults
+
         dispatch({type: GET_ALL, payload:recipes })
     }
 }
+
 
 export const getDetail = (id) => {
   return async function (dispatch){
@@ -18,6 +20,18 @@ export const getDetail = (id) => {
       
       dispatch({type: GET_DETAIL, payload: data})
   }
+}
+
+
+
+export const deleteRecipe = (id) => {
+  return async function (){
+    axios
+    .delete(`http://localhost:3001/food/recipes/${id}`)
+    .then((res) => alert(res.data))
+    .catch((err) => alert(err));
+
+}
 }
 export const postForm = (form) => {
   return async function (){

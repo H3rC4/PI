@@ -31,11 +31,11 @@ if(!form.health){
 if (!form.image) {
     errors.e5 = 'Debe ingresar la URL de la imagen';
 }
-// const urlRegex =/^http:\/\/.+$/;
+const urlRegex =/^http:\/\/.+$/;
 
-// if (!urlRegex.test(form.image)) {
-//    if(!errors.e9) errors.e9 = 'Ingrese una URL válida para la imagen';
-// }
+if (!urlRegex.test(form.image)) {
+   if(!errors.e5) errors.e5 = 'Ingrese una URL válida para la imagen';
+}
 
 
 return errors;
