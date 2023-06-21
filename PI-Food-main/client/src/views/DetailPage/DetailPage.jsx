@@ -23,8 +23,8 @@ const DetailPage = () => {
         <div className={style.recipeInfo}>
           <h2>{recipe.name && recipe.name}</h2>
           <p>{recipe.resume && recipe.resume}</p>
-          <p>Health Score: {recipe.health && recipe.health}</p>
-          <h3>Paso a Paso:</h3>
+          <label>Health Score: {recipe.health && recipe.health}</label>
+          <label>Paso a Paso:</label>
           <ol>{typeof recipe.paso === 'string'
             ? <li>{recipe.paso}</li>
             :''
@@ -33,10 +33,12 @@ const DetailPage = () => {
                 <li>{ele.step}</li>
             ))}
           </ol>
-          <p>Tipos de dieta: </p>
+          <label>Tipos de dieta: </label>
+          <ul>
           {
-            recipe.diets && recipe.diets.map((elem) => <p>{elem}</p>)
+            recipe.diets && recipe.diets.map((elem) => <li>{elem}</li>)
           }
+          </ul>
         </div>
       </div>
     </div>

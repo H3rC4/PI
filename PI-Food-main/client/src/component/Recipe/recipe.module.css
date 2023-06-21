@@ -44,10 +44,9 @@
 .recipe ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
+  grid-gap: 20px;
   color: white;
   font-weight: bold;
-  list-style-type: none; /* Elimina los puntos de los elementos */
   padding: 0; /* Elimina el espacio de relleno por defecto */
 }
 

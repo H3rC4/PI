@@ -1,5 +1,5 @@
 import style from './Home.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch,useSelector } from 'react-redux';
 import { useState, useEffect} from 'react'
 import RecipesContainer from '../../component/RecipesContainer/RecipesContainer';
 import Paginado from '../../component/Paginado/Paginado';
@@ -13,9 +13,12 @@ const Home = () => {
     componente o haya un cambio en el array de dependencias
     ejecute la funcion
     */
+    const recipes = useSelector((state) => state.recetasName)
+
+   
     useEffect(() => { 
-        dispatch(nextPage())
-    }, [dispatch]);
+        if(recipes.length > 10){dispatch(nextPage())}
+    }, [dispatch,recipes.length]);
 
     const [axu, setAux] = useState(false);
 

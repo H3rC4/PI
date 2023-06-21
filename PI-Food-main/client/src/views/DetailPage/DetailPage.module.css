@@ -8,15 +8,23 @@
   background-position: center; 
 
 }
+.card label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: white;
+  font-size: 18px;
+}
+
 
 .recipeCard {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   width: 80%;
   max-width: 600px;
 }
@@ -36,21 +44,34 @@
 h2 {
   font-size: 24px;
   margin-bottom: 10px;
+    color: white;
 }
 
 p {
-  font-size: 16px;
-  margin-bottom: 10px;
+  font-size: 14px;
+  margin: 5px 0;
+  color: beige;
+
 }
 
 h3 {
   font-size: 20px;
   margin-bottom: 10px;
+  color: white;
+
 }
 
 ol {
   text-align: left;
   margin-bottom: 10px;
+  color: white;
+
+}
+ul {
+  text-align: left;
+  margin-bottom: 10px;
+  color: white;
+
 }
 
 button {
