@@ -7,7 +7,9 @@ module.exports = async (req, res) => {
   try {
     const {idRecipe} = req.params;
     const id = Number(idRecipe);
-    const databaseRecipe = await Recipe.findAll({where:{id}});
+    const databaseRecipe = await Recipe.findAll({where:{id},include: 'Diets'});
+    
+    
     const { results } = (
       await axios.get(
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`

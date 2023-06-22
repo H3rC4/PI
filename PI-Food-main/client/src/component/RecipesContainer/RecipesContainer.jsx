@@ -15,6 +15,7 @@ const recetas = useSelector(state=>state.recetasName);
         name = {el.name}
         image = {el.image}
         diets = {el.diets}
+        Diets = {el.Diets}
         api={el.api}
         /> 
     })}

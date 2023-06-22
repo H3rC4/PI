@@ -8,7 +8,8 @@ import {
   PREV, 
   GET_DIETS,
   FIND_DIETS,
-  GET_DETAIL
+  GET_DETAIL,
+  DELETE_RECIPE
 } from './actionType'
 
 const initialstate = {
@@ -43,6 +44,14 @@ switch (action.type) {
             ...state,
             diets : action.payload
         };
+    case DELETE_RECIPE:
+      const id = action.payload
+      const deletedRecipe = state.recetasName.filter((elem)=>elem.id !== id)
+        return{
+            ...state,
+            recetas:deletedRecipe,
+            recetasName : deletedRecipe 
+        };
         case ORDER:
       const allRecipeOrdered = [...state.recetas];
       return {
@@ -75,12 +84,14 @@ switch (action.type) {
       };
 
       case FIND_DIETS:
-        const orderedByDiet = [...state.recetas];
-        return {
-          ...state,
-          recetasName: orderedByDiet.filter((e) => e.hasOwnProperty('diets') && e.diets.includes(action.payload))
-              
-        }; 
+      const allRecipeOrderedDiet = [...state.recetas];
+      
+      let filtered = allRecipeOrderedDiet.filter((e) => e.hasOwnProperty('diets') && e.diets.includes(action.payload))
+      return {
+        ...state,
+        recetasName: filtered
+            
+      };
 
       case NEXT:
         let indexNext = state.current+9

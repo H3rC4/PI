@@ -29,15 +29,11 @@ if(!form.health){
     if(!errors.e4)errors.e4 = 'El Heald Score debe ser un numero del 1 al 100'
  }
 if (!form.image) {
-    errors.e5 = 'Debe ingresar la URL de la imagen';
+    errors.e5 = 'Debe ingresar una URL ';
 }
-const urlRegex =/^http:\/\/.+$/;
-
-if (!urlRegex.test(form.image)) {
-   if(!errors.e5) errors.e5 = 'Ingrese una URL válida para la imagen';
+if (form.diets.length<1) {
+    errors.e6 = 'Debe ingresar un tipo de dieta';
 }
-
-
 return errors;
 }
 export default validate;

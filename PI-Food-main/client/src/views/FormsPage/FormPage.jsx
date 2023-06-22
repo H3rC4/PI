@@ -37,12 +37,13 @@ const FormPage = () => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
-      // Agregar el tipo de dieta seleccionado
       setForm({ ...form, diets: [...form.diets, value] });
+      setErrors({ ...errors, e6: '' })
     } else {
-      // Remover el tipo de dieta deseleccionado
       setForm({ ...form, diets: form.diets.filter((diet) => diet !== value) });
-    }
+      if(form.diets.length === 1){
+      setErrors({ ...errors, e6: 'Debe ingresar un tipo de dieta' });
+    }}
   };
 
   const submitHandler = (event) => {
@@ -101,7 +102,7 @@ const FormPage = () => {
             <label>Diets:</label>
             <div className={style.dietsContainer}>
               {diets.map((e) => {
-                const id = String(e.id); // convertir el ID en una cadena
+                const id = String(e.id); 
                 return (
                   <div key={e.id}>
                     <label>{e.name}</label>
@@ -116,6 +117,7 @@ const FormPage = () => {
                 );
               })}
             </div>
+              {errors.e6 && <p>{errors.e6}</p>}
           </div>
 
           <div>

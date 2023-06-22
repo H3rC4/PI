@@ -38,6 +38,10 @@ const DetailPage = () => {
           {
             recipe.diets && recipe.diets.map((elem) => <li>{elem}</li>)
           }
+          {
+            recipe.Diets && recipe.Diets.map((elem) => <li>{elem.name}</li>)
+          }
+          {console.log(recipe.Diets)}
           </ul>
         </div>
       </div>

@@ -25,7 +25,8 @@ module.exports = async (name) => {
         image: receta.image,
         resumen: receta.summary,
         paso:receta.analyzedInstructions,
-        diets: receta.diets
+        diets: receta.diets,
+        api:true
       }
       return obj;
     })
