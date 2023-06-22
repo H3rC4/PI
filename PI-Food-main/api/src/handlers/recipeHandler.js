@@ -1,7 +1,7 @@
 const apiName = require("../controllers/apiName");
 const dataBaseName = require("../controllers/dataBaseName");
-const getAll = require("../controllers/getAll");
-
+const getAllFromApi = require("../controllers/getAllFromApi");
+const getAllFromDB = require("../controllers/getAllFromDB");
 module.exports = async (req, res) => {
   try {
     const { name } = req.query;
@@ -11,7 +11,9 @@ module.exports = async (req, res) => {
       const response = [...responseData, ...responseApi ]
       return res.status(200).json(response);
     }
-    const all = await getAll()
+    const allApi = await getAllFromApi()
+    const allDB = await getAllFromDB()
+    const all = [...allDB,...allApi]
     return res.status(200).json(all);
   } catch (error) {
     return res.status(500).json({error: error.message});
