@@ -10,7 +10,8 @@ import {
   GET_DIETS,
   FIND_DIETS,
   GET_DETAIL,
-  DELETE_RECIPE
+  DELETE_RECIPE,
+  BUTTOMS
 } from './actionType'
 // import {modificatedResults} from './los100'
 // este es el action creator que tiene q
@@ -25,12 +26,28 @@ export const   getAll = () =>{
     }
 }
 
-
+export const buttomsPage = (index,page) => {
+  return {
+   type: BUTTOMS,
+   payload: {index,page},
+ 
+}}
 export const getDetail = (id) => {
-  return async function (dispatch){
-      const {data} = await axios.get(`http://localhost:3001/food/recipes/${id}`)
+  return  function (dispatch){
+      fetch(`http://localhost:3001/food/recipes/${id}`)
+      .then(response=>{
+        if(!response){
+          throw new Error(`Error de red ${response.status}`)
+        }
+        return response.json();
+      })
+      .then(data => {
+        dispatch({type: GET_DETAIL, payload: data})
+      })
+      .catch(error => {
+        return error.json
+      })
       
-      dispatch({type: GET_DETAIL, payload: data})
   }
 }
 

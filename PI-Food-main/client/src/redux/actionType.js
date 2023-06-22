@@ -9,3 +9,4 @@ export const GET_DIETS = 'GET_DIETS';
 export const FIND_DIETS = 'FIND_DIETS';
 export const GET_DETAIL = 'GET_DETAIL';
 export const DELETE_RECIPE = 'DELETE_RECIPE';
+export const BUTTOMS = 'BUTTOMS';

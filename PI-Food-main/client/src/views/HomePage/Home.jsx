@@ -3,6 +3,8 @@ import { useDispatch,useSelector } from 'react-redux';
 import { useState, useEffect} from 'react'
 import RecipesContainer from '../../component/RecipesContainer/RecipesContainer';
 import Paginado from '../../component/Paginado/Paginado';
+import ButtomsNav from '../../component/ButtomsNav/ButtomsNav'
+
 // importar las actions q queremos despacahar
 import { orderRecipes, orderAlfaRecipes,IsFromApi,filterDiets, getAll, nextPage } from '../../redux/actions'
 
@@ -68,6 +70,7 @@ const Home = () => {
                 <option value="ketogenic">ketogenic</option>
                 <option value="fodmap friendly">paleolithic</option>
             </select>
+            <ButtomsNav/>
             <RecipesContainer />
             <Paginado/>
 

@@ -9,7 +9,8 @@ import {
   GET_DIETS,
   FIND_DIETS,
   GET_DETAIL,
-  DELETE_RECIPE
+  DELETE_RECIPE,
+  BUTTOMS
 } from './actionType'
 
 const initialstate = {
@@ -92,6 +93,17 @@ switch (action.type) {
         recetasName: filtered
             
       };
+      case BUTTOMS:
+        let index = action.payload.index
+        let page = action.payload.page
+        let paginado = state.recetas.slice(index, index + 9 )
+        return {
+            ...state,
+            recetasName: paginado,
+            current:index,
+            paginado:page
+
+        } 
 
       case NEXT:
         let indexNext = state.current+9
