@@ -11,7 +11,8 @@ import {
   FIND_DIETS,
   GET_DETAIL,
   DELETE_RECIPE,
-  BUTTOMS
+  BUTTOMS,
+  POST
 } from './actionType'
 // import {modificatedResults} from './los100'
 // este es el action creator que tiene q
@@ -64,11 +65,12 @@ export const deleteRecipe = (id) => {
 }
 }
 export const postForm = (form) => {
-  return async function (){
-    axios
+  return async function (dispatch){
+   const {data} = await axios
     .post('http://localhost:3001/food/recipes', form)
-    .then((res) => alert(res.data))
     .catch((err) => alert(err));
+     alert('tu receta se creo correctamente')
+    dispatch({type: POST, payload: data})
 
 }
 }

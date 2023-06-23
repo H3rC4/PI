@@ -31,9 +31,6 @@ if(!form.health){
 if (!form.image) {
     errors.e5 = 'Debe ingresar una URL ';
 }
-if (form.diets.length<1) {
-    errors.e6 = 'Debe ingresar un tipo de dieta';
-}
 return errors;
 }
 export default validate;

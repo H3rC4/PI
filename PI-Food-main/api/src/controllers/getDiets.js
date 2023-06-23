@@ -15,7 +15,7 @@ const cleanedArray = (arr) => {
 module.exports = async () => {
   
   const dataBaseDiets = await Diets.findAll();
-  if(dataBaseDiets) return [...dataBaseDiets];
+  if(dataBaseDiets.length) return dataBaseDiets;
  
   const { results } = (
     await axios.get(

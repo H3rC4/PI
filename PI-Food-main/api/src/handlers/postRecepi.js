@@ -17,8 +17,21 @@ module.exports = async (req, res)=>{
         },
       });
     await recetaCreda.addDiets(findDiets);
+
+    const newRecipe = await Recipe.findOne({where: {name}, include:Diets})
+    const recipe = {
+      health: newRecipe.health,
+      id: newRecipe.id,
+      name: newRecipe.name,
+      image: newRecipe.image,
+      resumen: newRecipe.resumen,
+      paso:newRecipe.paso,
+      diets: newRecipe.Diets.map((e)=> e.name),
+      api: false
+    }
+    
      
-      return res.status(200).send('Tu receta se a creado satisfactoria mente');
+      return res.status(200).json(recipe);
     
   } catch (error) {
      return res.status(500).send(error)

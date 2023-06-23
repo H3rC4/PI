@@ -92,7 +92,7 @@ const FormPage = () => {
               type="text"
               placeholder="url de la imagen"
               name="image"
-              value={form.imagen}
+              value={form.image}
               onChange={changeHandler}
             />
             {errors.e5 && <p>{errors.e5}</p>}
@@ -101,7 +101,7 @@ const FormPage = () => {
           <div className={style.diets}>
             <label>Diets:</label>
             <div className={style.dietsContainer}>
-              {diets.map((e) => {
+              {diets && diets.map((e) => {
                 const id = String(e.id); 
                 return (
                   <div key={e.id}>
@@ -122,7 +122,7 @@ const FormPage = () => {
 
           <div>
             <button type="submit" disabled={isFormValid}>
-              Add Recipe
+              Agregar Receta
             </button>
           </div>
         </div>

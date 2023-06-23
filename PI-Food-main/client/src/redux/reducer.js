@@ -10,7 +10,8 @@ import {
   FIND_DIETS,
   GET_DETAIL,
   DELETE_RECIPE,
-  BUTTOMS
+  BUTTOMS,
+  POST
 } from './actionType'
 
 const initialstate = {
@@ -34,6 +35,7 @@ switch (action.type) {
         return{
             ...state,
             recipeDetail:action.payload
+            
         };
     case GET_NAME:
         return{
@@ -45,6 +47,13 @@ switch (action.type) {
             ...state,
             diets : action.payload
         };
+    case POST:
+        return{
+            ...state,
+            recetasName : [action.payload, ...state.recetasName,],
+            recetas: [action.payload, ...state.recetasName,]
+        };
+
     case DELETE_RECIPE:
       const id = action.payload
       const deletedRecipe = state.recetasName.filter((elem)=>elem.id !== id)
@@ -54,7 +63,7 @@ switch (action.type) {
             recetasName : deletedRecipe 
         };
         case ORDER:
-      const allRecipeOrdered = [...state.recetas];
+      const allRecipeOrdered = [...state.recetasName];
       return {
         ...state,
         recetasName:
@@ -63,7 +72,7 @@ switch (action.type) {
             : allRecipeOrdered.sort((a, b) => b.health - a.health),
       };
         case ORDER_ALFA:
-      const allRecipeOrderedAlfa = [...state.recetas];
+      const allRecipeOrderedAlfa = [...state.recetasName];
       return {
         ...state,
         recetasName:

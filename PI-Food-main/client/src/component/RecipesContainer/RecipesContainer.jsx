@@ -9,14 +9,13 @@ const recetas = useSelector(state=>state.recetasName);
     <div className={style.container}>
     {recetas.map((el)=>{
         return <Recipe
-        key={el.id}
+        key={el.id&&el.id}
         className={style.item}
-        id = {el.id}
-        name = {el.name}
-        image = {el.image}
-        diets = {el.diets}
-        Diets = {el.Diets}
-        api={el.api}
+        id = {el.id&&el.id}
+        name = {el.name&&el.name}
+        image = {el.image&&el.image}
+        diets = {el.diets&&el.diets}
+        api={el.api&&el.api}
         /> 
     })}
     </div>
