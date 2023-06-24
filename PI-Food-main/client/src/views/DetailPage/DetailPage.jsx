@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import style from './DetailPage.module.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { getDetail } from '../../redux/actions'
+import { getDetail,resetDetail } from '../../redux/actions'
 
 
 const DetailPage = () => {
@@ -11,6 +11,9 @@ const DetailPage = () => {
 
   useEffect(() => {
     dispatch(getDetail(id))
+    return()=>{
+      dispatch(resetDetail())
+    }
   }, [dispatch, id])
   const recipeDB = useSelector((state) => state.recipeDetail[0])
   const recipeApi = useSelector((state) => state.recipeDetail)

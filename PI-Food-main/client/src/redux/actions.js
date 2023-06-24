@@ -12,7 +12,8 @@ import {
   GET_DETAIL,
   DELETE_RECIPE,
   BUTTOMS,
-  POST
+  POST,
+  RECET_DETAIL
 } from './actionType'
 // import {modificatedResults} from './los100'
 // este es el action creator que tiene q
@@ -51,11 +52,14 @@ export const getDetail = (id) => {
       
   }
 }
-
+export const resetDetail = () => {
+  return  function (dispatch){
+    dispatch({type: RECET_DETAIL})
+  }
+  }
 
 
 export const deleteRecipe = (id) => {
-  console.log(id)
   return async function (dispatch){
     axios
     .delete(`http://localhost:3001/food/recipes/${id}`)

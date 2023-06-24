@@ -9,6 +9,7 @@ import {
   GET_DIETS,
   FIND_DIETS,
   GET_DETAIL,
+  RECET_DETAIL,
   DELETE_RECIPE,
   BUTTOMS,
   POST
@@ -35,6 +36,12 @@ switch (action.type) {
         return{
             ...state,
             recipeDetail:action.payload
+            
+        };
+    case RECET_DETAIL:
+        return{
+            ...state,
+            recipeDetail:[]
             
         };
     case GET_NAME:
